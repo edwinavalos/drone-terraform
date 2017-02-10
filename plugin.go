@@ -148,8 +148,10 @@ func planCommand(variables map[string]string, secrets map[string]string, paralle
 		args = append(args, fmt.Sprintf("%s=%s", k, v))
 	}
 	for k, v := range secrets {
-		args = append(args, "-var")
-		args = append(args, fmt.Sprintf("%s=%s", k, os.Getenv(v)))
+		if k != "GOOGLE_CREDENTIALS" {
+			args = append(args, "-var")
+			args = append(args, fmt.Sprintf("%s=%s", k, os.Getenv(v)))
+		}
 	}
 	if parallelism > 0 {
 		args = append(args, fmt.Sprintf("-parallelism=%d", parallelism))
