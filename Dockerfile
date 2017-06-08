@@ -3,7 +3,7 @@
 #     docker build --rm=true -t jmccann/drone-terraform:latest .
 
 FROM gliderlabs/alpine:3.2
-ENV TERRAFORM_VERSION 0.8.6
+ENV TERRAFORM_VERSION 0.9.4
 
 RUN apk-install ca-certificates git
 
